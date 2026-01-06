@@ -1,26 +1,89 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+    --background: #ffffff;
+    --foreground: #171717;
+
+    /* Theme CSS Variables */
+    --theme-background: linear-gradient(
+        135deg,
+        #ffd1dc 0%,
+        #ffb6c1 50%,
+        #ffc0cb 100%
+    );
+    --theme-paper: #fff5f7;
+    --theme-primary: #ff69b4;
+    --theme-secondary: #ffb6c1;
+    --theme-accent: #ff1493;
+    --theme-border: #ffb6c1;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --font-sans: var(--font-quicksand);
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+    :root {
+        --background: #0a0a0a;
+        --foreground: #ededed;
+    }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+    font-family: var(--font-quicksand), sans-serif;
+}
+
+/* Apply themed background */
+.themed-background {
+    background: var(--theme-background);
+}
+
+/* Paper area with theme colors */
+.themed-paper {
+    background-color: var(--theme-paper);
+}
+
+/* Themed borders and accents */
+.themed-border {
+    border-color: var(--theme-border);
+}
+
+.themed-primary {
+    color: var(--theme-primary);
+}
+
+.themed-secondary {
+    color: var(--theme-secondary);
+}
+
+/* Washi Tape Effect */
+.washi-tape {
+    position: relative;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    transition: transform 0.2s ease;
+}
+
+.washi-tape:hover {
+    transform: translateY(-2px);
+}
+
+.washi-tape::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 100%;
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.2) 0%,
+        transparent 50%,
+        rgba(0, 0, 0, 0.05) 100%
+    );
+    pointer-events: none;
+    border-radius: inherit;
 }
