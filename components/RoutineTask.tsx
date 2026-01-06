@@ -47,14 +47,14 @@ export default function RoutineTask({
           }
           backdrop-blur-sm
           hover:shadow-[10px_10px_0px_0px_rgba(0,0,0,0.15)]
-          hover:translate-x-[-2px] hover:translate-y-[-2px]
+          hover:-translate-x-0.5 hover:-translate-y-0.5
         `}
             >
                 <div className="flex items-center gap-4">
                     {/* Custom checkbox */}
                     <button
                         onClick={handleToggle}
-                        className="relative flex-shrink-0 w-8 h-8 group"
+                        className="relative shrink-0 w-8 h-8 group"
                     >
                         <div
                             className={`

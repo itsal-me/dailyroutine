@@ -76,27 +76,19 @@ export default function RoutineCanvas({
         : {};
 
     return (
-        <div className="flex justify-center items-center p-4">
-            {/* 9:16 Aspect Ratio Container */}
-            <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5 }}
-                className="relative w-full max-w-md"
-                style={{
-                    aspectRatio: "9/16",
-                }}
-            >
+        <div className="w-full overflow-x-auto overflow-y-visible py-4">
+            <div className="flex justify-center items-center px-4 min-w-max">
+                {/* Canvas Container */}
                 <div
                     id={canvasId}
-                    className="absolute inset-0 rounded-3xl overflow-hidden"
+                    className="relative w-125 rounded-3xl overflow-hidden"
                     style={{
                         background: template?.background.gradient,
                         boxShadow: "8px 8px 0px 0px rgba(0,0,0,0.1)",
                     }}
                 >
                     {/* Paper Background */}
-                    <div className="absolute inset-0">
+                    <div className="absolute inset-0 pointer-events-none">
                         {/* Paper texture */}
                         <div
                             className="absolute inset-0"
@@ -122,7 +114,7 @@ export default function RoutineCanvas({
                     </div>
 
                     {/* Content Container */}
-                    <div className="relative h-full overflow-y-auto p-8 flex flex-col">
+                    <div className="relative p-8 flex flex-col">
                         {/* Title */}
                         <motion.div
                             initial={{ y: -20, opacity: 0 }}
@@ -147,7 +139,7 @@ export default function RoutineCanvas({
                         </motion.div>
 
                         {/* Routine Blocks */}
-                        <div className="flex-1 space-y-2">
+                        <div className="flex-1 grid grid-cols-2 gap-x-3.5">
                             {routineItems.map((item, index) => (
                                 <motion.div
                                     key={item.id}
@@ -178,7 +170,7 @@ export default function RoutineCanvas({
                         </motion.div>
                     </div>
                 </div>
-            </motion.div>
+            </div>
         </div>
     );
 }

@@ -24,7 +24,7 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body
-                className={`${quicksand.variable} font-sans antialiased min-h-screen themed-background`}
+                className={`${quicksand.variable} font-sans antialiased min-h-screen themed-background overflow-x-hidden`}
             >
                 <ThemeProvider>
                     <nav className="sticky top-0 z-50 backdrop-blur-md bg-white/30 border-b border-white/50 shadow-sm">

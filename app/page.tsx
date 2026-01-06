@@ -48,7 +48,35 @@ export default function Home() {
 
     const [newTime, setNewTime] = useState("");
     const [newActivity, setNewActivity] = useState("");
+    const [newIcon, setNewIcon] = useState("✨");
     const [showAddForm, setShowAddForm] = useState(false);
+
+    const iconOptions = [
+        "🌅",
+        "☕",
+        "📚",
+        "🍱",
+        "🎨",
+        "✨",
+        "💪",
+        "🧘",
+        "🏃",
+        "💼",
+        "🎮",
+        "🎵",
+        "📱",
+        "💻",
+        "🍕",
+        "🌙",
+        "⭐",
+        "🌸",
+        "🦋",
+        "🌈",
+        "🔥",
+        "💖",
+        "🎯",
+        "📝",
+    ];
 
     const templates = getTemplateOptions();
     const currentTemplate = getTemplateById(selectedTemplate);
@@ -79,12 +107,13 @@ export default function Home() {
             time: formatTime(newTime),
             activity: newActivity,
             color: randomColor,
-            icon: "✨",
+            icon: newIcon,
         };
 
         setRoutineItems([...routineItems, newItem]);
         setNewTime("");
         setNewActivity("");
+        setNewIcon("✨");
         setShowAddForm(false);
     };
 
@@ -140,6 +169,7 @@ export default function Home() {
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.3 }}
+                        className="overflow-x-auto overflow-y-visible"
                     >
                         <RoutineCanvas
                             routineItems={routineItems}
@@ -203,6 +233,29 @@ export default function Home() {
                             ) : (
                                 <div className="space-y-3 p-4 bg-purple-50 rounded-2xl">
                                     <div>
+                                        <label className="block text-sm font-semibold text-purple-700 mb-2">
+                                            Icon
+                                        </label>
+                                        <div className="grid grid-cols-8 gap-1.5 p-2 bg-white rounded-xl border-2 border-purple-200">
+                                            {iconOptions.map((icon) => (
+                                                <button
+                                                    key={icon}
+                                                    type="button"
+                                                    onClick={() =>
+                                                        setNewIcon(icon)
+                                                    }
+                                                    className={`text-xl p-1.5 rounded-lg transition-all duration-200 flex items-center justify-center ${
+                                                        newIcon === icon
+                                                            ? "bg-linear-to-br from-purple-400 to-purple-600 shadow-md border-2 border-purple-500"
+                                                            : "hover:bg-purple-50 hover:scale-105 active:scale-95 border-2 border-transparent"
+                                                    }`}
+                                                >
+                                                    {icon}
+                                                </button>
+                                            ))}
+                                        </div>
+                                    </div>
+                                    <div>
                                         <label className="block text-sm font-semibold text-purple-700 mb-1">
                                             Time
                                         </label>
@@ -241,6 +294,7 @@ export default function Home() {
                                                 setShowAddForm(false);
                                                 setNewTime("");
                                                 setNewActivity("");
+                                                setNewIcon("✨");
                                             }}
                                             className="flex-1 py-2 bg-gray-300 text-gray-700 rounded-xl font-semibold hover:scale-105 transition-transform"
                                         >
@@ -301,7 +355,7 @@ export default function Home() {
                         </div>
 
                         {/* Tips */}
-                        <div className="bg-gradient-to-r from-pink-100 to-purple-100 p-6 rounded-3xl border-4 border-white shadow-[5px_5px_0px_0px_rgba(0,0,0,0.1)]">
+                        <div className="bg-linear-to-r from-pink-100 to-purple-100 p-6 rounded-3xl border-4 border-white shadow-[5px_5px_0px_0px_rgba(0,0,0,0.1)]">
                             <p className="text-sm text-gray-700">
                                 <span className="font-bold">💡 Tip:</span> Use
                                 the theme switcher in the navigation to change

@@ -48,13 +48,13 @@ export default function RoutineBlock({
                 />
 
                 {/* Content */}
-                <div className="relative flex items-center gap-4 z-10">
-                    <span className="text-3xl flex-shrink-0">{icon}</span>
+                <div className="relative flex flex-col items-center text-center gap-2 z-10">
+                    <span className="text-3xl shrink-0">{icon}</span>
                     <div className="flex-1">
-                        <div className="text-sm font-bold text-gray-700 opacity-80">
+                        <div className="text-xs font-bold text-gray-700 opacity-80">
                             {time}
                         </div>
-                        <div className="text-lg font-semibold text-gray-800">
+                        <div className="text-sm font-semibold text-gray-800 line-clamp-2">
                             {activity}
                         </div>
                     </div>
